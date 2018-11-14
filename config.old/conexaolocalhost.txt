@@ -1,0 +1,5 @@
+////modificar no arquivo env.js
+API_URL: NODE_ENV === 'production' ? 'api/' : 'http://localhost:8081/' 
+
+//BaseService 
+this.baseUrl = process.env.API_URL + baseUrl;

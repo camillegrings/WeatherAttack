@@ -1,0 +1,33 @@
+CREATE TABLE USUARIO(
+	ID_USUARIO SERIAL PRIMARY KEY,
+	NOME VARCHAR(50) NOT NULL,
+	EMAIL VARCHAR(50) NOT NULL,
+	APELIDO VARCHAR(50) NOT NULL,
+	SENHA VARCHAR(128) NOT NULL
+);
+
+CREATE TABLE condicao (
+	id_condicao serial not null,
+	nome varchar(30) not null,
+	constraint pk_condicao primary key(id_condicao)
+);
+
+CREATE TABLE poder (
+	id_poder serial not null,
+	nome varchar(50) not null,
+	constraint pk_poder primary key(id_poder)
+);
+
+CREATE TABLE poder (
+	id_poder serial not null,
+	nome varchar(50) not null,
+	constraint pk_poder primary key(id_poder)
+);
+
+CREATE TABLE regra (
+	id_regra serial not null,
+    id_condicao integer REFERENCES condicao ON DELETE CASCADE not null,
+    id_poder integer REFERENCES poder ON DELETE CASCADE not null,
+    valor integer not null,
+    PRIMARY KEY (id_regra, id_condicao, id_poder)
+);

@@ -1,0 +1,14 @@
+-- stop docker
+docker stop some-postgres
+
+-- remove
+docker stop some-postgres
+
+-- run
+docker run --name some-postgres -p 5432:5432 -e POSTGRES_PASSWORD=pass -d postgres
+
+-- connect internal
+docker run -it --rm --link some-postgres:postgres postgres psql -h postgres -U postgres
+
+-- ip
+docker-machine ip
